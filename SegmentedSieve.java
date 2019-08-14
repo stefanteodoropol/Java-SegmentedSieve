@@ -1,5 +1,6 @@
 //Creator: Stefan Nicolae Teodoropol
-//Date: 13.08.2019
+//Date: 14.08.2019
+//Version: 1.1
 
 import java.util.*;
 import java.lang.*;
@@ -45,16 +46,17 @@ public class SegmentedSieve
 		int diff = b - a;
 		resultsieve = new boolean[diff+1];
 		// We set up a resultsieve array to have small numbers with regards to array access times.
-		
+		int primetocheck = 0;
+		int divisor = 0;
 		for (int i = 0; i < found; i++) {
 			// Loop through the primes[] array
-			int primetocheck = primes[i];
+			primetocheck = primes[i];
 			/* We start with the smallest multiple of our current prime and only check numbers that are within our range.
 			Ex: primetocheck is 2, range is 9 to 13. Divide 9 by 2 to get 4.5, round down to 4. 
 			Multiply that back with our primetocheck to get 8.
 			8 is the largest multiple of primetocheck just before being in the range of 9 to 13.
 			*/	
-			int divisor = (a/primetocheck);
+			divisor = (a/primetocheck);
 			// This division can sometimes lead to small results, we need divisor to not go below 1.
 			if (divisor == 0) { divisor = 1; }
 			divisor *= primetocheck;
